@@ -1,0 +1,37 @@
+---
+title: "assignment-6-Adamlajonuhu"
+format: html
+editor: visual
+---
+
+## Part I
+
+### Question 1: Average departure delay
+
+```{r}
+library(DBI)
+library(duckdb)
+```
+
+```{r}
+con <- dbConnect(duckdb::duckdb(),
+                 dbdir = "data/flights.duckdb",
+                 read_only = TRUE)
+```
+
+```{r}
+dbListTables(con)
+```
+
+```{r}
+avg_delay <- dbGetQuery(con, "
+SELECT AVG(dep_delay) AS avg_departure_delay
+FROM flights
+")
+
+print(avg_delay)
+```
+
+```{r}
+dbDisconnect(con, shutdown = TRUE)
+```
