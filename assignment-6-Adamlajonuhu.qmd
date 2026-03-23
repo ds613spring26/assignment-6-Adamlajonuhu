@@ -1,37 +1,36 @@
 ---
 title: "assignment-6-Adamlajonuhu"
-format: html
-editor: visual
+author: "ADAM LAJO NUHU"
+date: "2026-03-23"
+output: html_document
 ---
 
-## Part I
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 
 ### Question 1: Average departure delay
-
 ```{r}
 library(DBI)
 library(duckdb)
-```
 
-```{r}
-con <- dbConnect(duckdb::duckdb(),
-                 dbdir = "data/flights.duckdb",
-                 read_only = TRUE)
-```
+con <- dbConnect(
+  duckdb::duckdb(),
+  dbdir = "data/flights.duckdb",
+  read_only = TRUE
+)
 
-```{r}
-dbListTables(con)
-```
-
-```{r}
 avg_delay <- dbGetQuery(con, "
-SELECT AVG(dep_delay) AS avg_departure_delay
-FROM flights
+  SELECT ROUND(AVG(dep_delay), 2) AS avg_departure_delay
+  FROM flights
+  WHERE dep_delay IS NOT NULL
 ")
 
 print(avg_delay)
-```
 
-```{r}
 dbDisconnect(con, shutdown = TRUE)
 ```
+
+## Interpretation:
+The average departure delay for flights in the dataset is 12.64 minutes, meaning that, on average, flights depart about 12.64 minutes later than their scheduled departure time.
