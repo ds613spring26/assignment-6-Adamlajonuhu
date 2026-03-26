@@ -87,3 +87,7 @@ dbDisconnect(conn, shutdown = TRUE)
 ### (c)
 
 ![](images/DBC.png)
+
+### (d)
+
+![](images/DBD.png)
