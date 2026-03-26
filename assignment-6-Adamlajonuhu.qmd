@@ -76,4 +76,10 @@ dbDisconnect(conn, shutdown = TRUE)
 
 ## Part 2:
 
+### (a)
+
 ![](images/DBA.png)
+
+### (b)
+
+![](images/DBB.png)
