@@ -9,7 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 ```{r}
 library(DBI)
 library(duckdb)
@@ -75,3 +74,6 @@ dbGetQuery(conn, "
 dbDisconnect(conn, shutdown = TRUE)
 ```
 
+## Part 2:
+
+![](images/DBA.png)
